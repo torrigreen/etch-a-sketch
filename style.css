@@ -1,8 +1,8 @@
 .grid {
+	margin-top: 8px;
 	flex: auto;
 	display: flex;
 	flex-flow: row wrap;
-	border: 1px solid black;
 	aspect-ratio: 1 / 1;
 	max-height: 95vh;
 }
@@ -10,8 +10,6 @@
 .block {
 	box-sizing: border-box;
 	border: 1px solid black;
-	height: 6.25%;
-	width: 6.25%;
 }
 
 .hovered {
