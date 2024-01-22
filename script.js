@@ -1,8 +1,10 @@
 const grid = document.querySelector(`.grid`);
 
 function generateGrid (size) {
-	if (size > 100) {
-		alert(`max grid size is 100. please input a new size.`);
+	size = +size;
+
+	if (size > 100 || size <= 0 || !Number.isInteger(size)) {
+		alert(`grid size must be a positive integer less than 100. try again.`);
 		return;
 	}
 
