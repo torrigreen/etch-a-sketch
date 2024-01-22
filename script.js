@@ -4,9 +4,21 @@ function generateColor(square) {
 	const red = Math.floor(Math.random() * 256);
 	const green = Math.floor(Math.random() * 256);
 	const blue = Math.floor(Math.random() * 256);
-	console.log(square);
+	const alpha = 0.1;
+	square.style.backgroundColor = `rgb(${red}, ${green}, ${blue}, ${alpha})`;
+}
 
-	square.style.backgroundColor = `rgb(${red}, ${green}, ${blue})`;
+function darkenColor(square) {
+	const oldRGBA = square.style.backgroundColor;
+	const oldColor = oldRGBA.slice(0, -6);
+	const oldAlpha = oldRGBA.slice(-4, -1);
+	
+	// stop the function if the alpha has already reached 1
+	if (Number.isInteger(+oldAlpha)) {return;}
+
+	const newAlpha = +oldAlpha + 0.1;
+	const newRGBA = `${oldColor}, ${newAlpha})`;
+	square.style.backgroundColor = newRGBA;
 }
 
 function generateGrid (size) {
@@ -29,7 +41,13 @@ function generateGrid (size) {
 
 		div.classList.add(`block`);
 
-		div.addEventListener(`mouseenter`, () => generateColor(div));
+		div.addEventListener(`mouseenter`, () => {
+			if (div.style.backgroundColor) {
+				darkenColor(div);
+			} else {
+				generateColor(div);
+			}
+		});
 
 		grid.appendChild(div);
 	}
