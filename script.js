@@ -1,5 +1,14 @@
 const grid = document.querySelector(`.grid`);
 
+function generateColor(square) {
+	const red = Math.floor(Math.random() * 256);
+	const green = Math.floor(Math.random() * 256);
+	const blue = Math.floor(Math.random() * 256);
+	console.log(square);
+
+	square.style.backgroundColor = `rgb(${red}, ${green}, ${blue})`;
+}
+
 function generateGrid (size) {
 	size = +size;
 
@@ -20,7 +29,7 @@ function generateGrid (size) {
 
 		div.classList.add(`block`);
 
-		div.addEventListener(`mouseenter`, () => div.classList.add(`hovered`));
+		div.addEventListener(`mouseenter`, () => generateColor(div));
 
 		grid.appendChild(div);
 	}
