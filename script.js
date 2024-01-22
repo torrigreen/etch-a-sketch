@@ -29,4 +29,7 @@ function generateGrid (size) {
 const input = document.querySelector(`input`);
 const btn = document.querySelector(`button`);
 
+input.addEventListener(`keypress`, (e) => {
+	if(e.key === `Enter`) generateGrid(input.value);
+});
 btn.addEventListener(`click`, () => generateGrid(input.value));
